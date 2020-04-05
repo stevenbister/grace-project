@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const text = './test.txt';
+const text = './WhatsApp Chat with Grace.txt';
 
 fs.readFile(text, 'utf-8', (err, data) => {
   if (err) throw err;
