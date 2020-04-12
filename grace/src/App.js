@@ -1,5 +1,7 @@
-import React from 'react'
-import Message from './components/message'
+import React from 'react';
+import Message from './components/Message';
+import Counter from './components/Counter';
+import EmojiCount from './components/EmojiCount';
 
 export default class App extends React.Component {
   state = {
@@ -31,6 +33,9 @@ export default class App extends React.Component {
     if( isLoading === false) {
       return (
         <React.Fragment>
+          <Counter count={messages.length} />
+
+          <p>These were the first messages we sent each other after you gave me your number</p>
           {/* Let's get the first X messages */}
           {messages.slice(0, 2).map((m) => {
             const { id, message } = m
