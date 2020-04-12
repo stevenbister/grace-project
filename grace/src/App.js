@@ -1,7 +1,6 @@
 import React from 'react';
 import Message from './components/Message';
 import Counter from './components/Counter';
-import EmojiCount from './components/EmojiCount';
 
 export default class App extends React.Component {
   state = {
@@ -35,6 +34,10 @@ export default class App extends React.Component {
         <React.Fragment>
           <Counter count={messages.length} />
 
+          <Counter count={messages.map(m => m.message).join(',').match(/❤️/gi).length} item={'❤️'} />
+
+          <Counter count={messages.map(m => m.message).join(',').match(/love you/gi).length} item={`love you's`} />
+
           <p>These were the first messages we sent each other after you gave me your number</p>
           {/* Let's get the first X messages */}
           {messages.slice(0, 2).map((m) => {
@@ -49,6 +52,7 @@ export default class App extends React.Component {
               time={time}
             />
           })}
+
         </React.Fragment>
       );
     } else {
