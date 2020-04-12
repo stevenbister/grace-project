@@ -1,12 +1,20 @@
 import React from 'react';
 import Message from './components/Message';
 import Counter from './components/Counter';
+import RandomNumberButton from './components/RandomNumberButton'
 
 export default class App extends React.Component {
-  state = {
-    error: null,
-    isLoading: true,
-    messages: [],
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      error: null,
+      isLoading: true,
+      messages: [],
+      number: '',
+    }
+
+    this.handleRandomNumber = this.handleRandomNumber.bind(this);
   }
 
   fetchData() {
@@ -22,14 +30,30 @@ export default class App extends React.Component {
       .catch(error => this.setState({ error, isLoading: false }));
   }
 
+  handleRandomNumber(number) {
+    this.setState({number})
+  }
+
   componentDidMount() {
     this.fetchData();
   }
 
   render() {
-    const { messages, isLoading } = this.state;
+    const { messages, number, isLoading } = this.state;
+    let randomMessage;
 
-    if( isLoading === false) {
+    // If number is set generate random message
+    if (number) {
+      randomMessage = <Message
+        key={messages[number].id}
+        name={messages[number].meta.name} 
+        message={messages[number].message} 
+        date={messages[number].meta.date} 
+        time={messages[number].meta.time} 
+      />
+    }
+
+    if (isLoading === false) {
       return (
         <React.Fragment>
           <Counter count={messages.length} />
@@ -40,7 +64,7 @@ export default class App extends React.Component {
 
           <p>These were the first messages we sent each other after you gave me your number</p>
           {/* Let's get the first X messages */}
-          {messages.slice(0, 2).map((m) => {
+          {messages.slice(0, 2).map(m => {
             const { id, message } = m
             const { name, date, time } = m.meta
 
@@ -52,6 +76,12 @@ export default class App extends React.Component {
               time={time}
             />
           })}
+
+        <div>
+          <RandomNumberButton text={'Generate a random message'} max={messages.length} onClick={this.handleRandomNumber}/>
+          {randomMessage}
+        </div>
+          
 
         </React.Fragment>
       );
