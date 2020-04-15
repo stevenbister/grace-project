@@ -88,7 +88,5 @@ export default class App extends React.Component {
     } else {
       return <p>Loading...</p>
     }
-  }
-
-  
+  }  
 }
