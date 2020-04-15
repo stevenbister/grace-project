@@ -4,6 +4,7 @@ import Counter from './components/Counter';
 import Emoji from './components/Emoji'
 import RandomNumberButton from './components/RandomNumberButton';
 import Block from './containers/Block';
+import './App.css';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -58,11 +59,11 @@ export default class App extends React.Component {
     if (isLoading === false) {
       return (
         <React.Fragment>
-          <Block>
+          <Block colour="purple">
             <Counter count={messages.length} />
           </Block>
 
-          <Block>
+          <Block colour="peach">
             <Counter count={messages.map(m => m.message).join(',').match(/❤️/gi).length} item={'❤️'} />
 
             <h2>That looks like this...</h2>
@@ -71,7 +72,7 @@ export default class App extends React.Component {
 
           {/* <Counter count={messages.map(m => m.message).join(',').match(/love you/gi).length} item={`love you's`} /> */}
 
-          <Block>
+          <Block colour="green">
             <h2>These were the first messages we sent each other after you gave me your number</h2>
             {/* Let's get the first X messages */}
             {messages.slice(0, 2).map(m => {
@@ -88,7 +89,7 @@ export default class App extends React.Component {
             })}
           </Block>
 
-          <Block>
+          <Block colour="blue">
             <RandomNumberButton text={'Generate a random message'} max={messages.length} onClick={this.handleRandomNumber}/>
             {randomMessage}
           </Block>        

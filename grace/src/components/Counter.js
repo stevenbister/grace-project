@@ -1,6 +1,16 @@
 import React from 'react';
+import styled from 'styled-components';
 
-const Counter = (props) => <p><span>{props.count}</span> {props.item}</p>
+const Paragraph = styled.p`
+
+`;
+
+const Span = styled.span`
+  font-family: var(--heading-font);
+  font-size: 22vw;
+`
+
+const Counter = (props) => <Paragraph><Span>{props.count}</Span> {props.item}</Paragraph>
 
 Counter.defaultProps = {
   item: 'messages',
