@@ -3,6 +3,7 @@ import Message from './components/Message';
 import Counter from './components/Counter';
 import Emoji from './components/Emoji'
 import RandomNumberButton from './components/RandomNumberButton';
+import Block from './containers/Block';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -57,36 +58,40 @@ export default class App extends React.Component {
     if (isLoading === false) {
       return (
         <React.Fragment>
-          <Counter count={messages.length} />
+          <Block>
+            <Counter count={messages.length} />
+          </Block>
 
-          <Counter count={messages.map(m => m.message).join(',').match(/❤️/gi).length} item={'❤️'} />
+          <Block>
+            <Counter count={messages.map(m => m.message).join(',').match(/❤️/gi).length} item={'❤️'} />
 
-          <h2>That looks like this...</h2>
-          <Emoji emoji={messages.map(m => m.message).join(',').match(/❤️/gi)} />
+            <h2>That looks like this...</h2>
+            <Emoji emoji={messages.map(m => m.message).join(',').match(/❤️/gi)} />
+          </Block>
 
-          <Counter count={messages.map(m => m.message).join(',').match(/love you/gi).length} item={`love you's`} />
+          {/* <Counter count={messages.map(m => m.message).join(',').match(/love you/gi).length} item={`love you's`} /> */}
 
-          <p>These were the first messages we sent each other after you gave me your number</p>
-          {/* Let's get the first X messages */}
-          {messages.slice(0, 2).map(m => {
-            const { id, message } = m
-            const { name, date, time } = m.meta
+          <Block>
+            <h2>These were the first messages we sent each other after you gave me your number</h2>
+            {/* Let's get the first X messages */}
+            {messages.slice(0, 2).map(m => {
+              const { id, message } = m
+              const { name, date, time } = m.meta
 
-            return <Message 
-              key={id}
-              name={name} 
-              message={message} 
-              date={date} 
-              time={time}
-            />
-          })}
+              return <Message 
+                key={id}
+                name={name} 
+                message={message} 
+                date={date} 
+                time={time}
+              />
+            })}
+          </Block>
 
-        <div>
-          <RandomNumberButton text={'Generate a random message'} max={messages.length} onClick={this.handleRandomNumber}/>
-          {randomMessage}
-        </div>
-          
-
+          <Block>
+            <RandomNumberButton text={'Generate a random message'} max={messages.length} onClick={this.handleRandomNumber}/>
+            {randomMessage}
+          </Block>        
         </React.Fragment>
       );
     } else {
