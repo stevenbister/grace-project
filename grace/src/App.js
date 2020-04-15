@@ -1,7 +1,8 @@
 import React from 'react';
 import Message from './components/Message';
 import Counter from './components/Counter';
-import RandomNumberButton from './components/RandomNumberButton'
+import Emoji from './components/Emoji'
+import RandomNumberButton from './components/RandomNumberButton';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -59,6 +60,9 @@ export default class App extends React.Component {
           <Counter count={messages.length} />
 
           <Counter count={messages.map(m => m.message).join(',').match(/❤️/gi).length} item={'❤️'} />
+
+          <h2>That looks like this...</h2>
+          <Emoji emoji={messages.map(m => m.message).join(',').match(/❤️/gi)} />
 
           <Counter count={messages.map(m => m.message).join(',').match(/love you/gi).length} item={`love you's`} />
 
