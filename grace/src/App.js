@@ -1,10 +1,16 @@
 import React from 'react';
+import styled from 'styled-components';
 import Message from './components/Message';
 import Counter from './components/Counter';
 import Emoji from './components/Emoji'
 import RandomNumberButton from './components/RandomNumberButton';
 import Block from './containers/Block';
 import './App.css';
+
+const Heading2 = styled.h2`
+  font-size: 1.2rem;
+  margin-bottom: 1.6rem;
+`;
 
 export default class App extends React.Component {
   constructor(props) {
@@ -64,16 +70,16 @@ export default class App extends React.Component {
           </Block>
 
           <Block colour="peach">
-            <Counter count={messages.map(m => m.message).join(',').match(/❤️/gi).length} item={'❤️'} />
+            <Counter count={messages.map(m => m.message).join(',').match(/❤️/gi).length} item={`❤️'s`} />
 
-            <h2>That looks like this...</h2>
+            <Heading2>That looks like this...</Heading2>
             <Emoji emoji={messages.map(m => m.message).join(',').match(/❤️/gi)} />
           </Block>
 
           {/* <Counter count={messages.map(m => m.message).join(',').match(/love you/gi).length} item={`love you's`} /> */}
 
           <Block colour="green">
-            <h2>These were the first messages we sent each other after you gave me your number</h2>
+            <Heading2>These were the first messages we sent each other after you gave me your number</Heading2>
             {/* Let's get the first X messages */}
             {messages.slice(0, 2).map(m => {
               const { id, message } = m

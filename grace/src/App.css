@@ -4,14 +4,20 @@
   --heading-font: 'Luckiest Guy', cursive;
   --body-font: 'Open Sans', sans-serif;
   --base-font-size: 16px;
+  --message-colour: #ffede1;
 }
 
 html {
   font-family: var(--body-font);
   font-size: var(--base-font-size);
   scroll-snap-type: y mandatory;
+  color: #1e2019;
 }
 
-h1, h2, h3, h4 ,h5 h6 {
+h1,
+h2,
+h3,
+h4,
+h5 h6 {
   font-family: var(--heading-font);
 }
