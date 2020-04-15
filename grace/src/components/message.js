@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Message(props) {
+const Message = (props) => {
   const { name, message, date, time } = props;
 
   return (
@@ -11,3 +11,5 @@ export default function Message(props) {
     </div>
   )
 }
+
+export default Message;
