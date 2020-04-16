@@ -5,6 +5,10 @@
   --body-font: 'Open Sans', sans-serif;
   --base-font-size: 16px;
   --message-colour: #ffede1;
+  --purple: rgb(165, 115, 221);
+  --green: rgb(155, 247, 169);
+  --peach: rgb(252, 224, 181);
+  --blue: rgb(141, 177, 244);
 }
 
 html {

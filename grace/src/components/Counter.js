@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const Paragraph = styled.p`
   grid-column: 2 / 3;
-  align-self: center;
 `;
 
 const Span = styled.span`

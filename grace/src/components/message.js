@@ -5,10 +5,12 @@ const Container = styled.div`
   background: var(--message-colour);
   border: solid var(--message-colour) red;
   border-radius: 5px;
-  padding: 5px 20px 5px 5px;
-  margin-left: 10px;
+  box-shadow: 2px 2px 2px #7f7979;
   font-size: 14px;
-  grid-column: 1 / 3;
+  padding: 5px 20px 5px 5px;
+  margin-bottom: 20px;
+  word-wrap: anywhere;
+  ${props => props.name === 'Grace' ? 'margin-right: 10px;' : 'margin-left: 10px;' };
 `;
 
 const Name = styled.span`
@@ -22,6 +24,7 @@ const Date = styled.span`
   text-align: right;
   display: block;
   color: #7f7979;
+  padding-top: 10px;
 `;
 
 const MessageText = styled.p`
@@ -32,7 +35,7 @@ const Message = (props) => {
   const { name, message, date, time } = props;
 
   return (
-    <Container>
+    <Container name={name}>
       <Name>{name}</Name>
       <MessageText>{message}</MessageText>
       <Date>{date} {time}</Date>

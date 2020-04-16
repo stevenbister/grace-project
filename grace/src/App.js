@@ -76,8 +76,6 @@ export default class App extends React.Component {
             <Emoji emoji={messages.map(m => m.message).join(',').match(/❤️/gi)} />
           </Block>
 
-          {/* <Counter count={messages.map(m => m.message).join(',').match(/love you/gi).length} item={`love you's`} /> */}
-
           <Block colour="green">
             <Heading2>These were the first messages we sent each other after you gave me your number</Heading2>
             {/* Let's get the first X messages */}
@@ -98,7 +96,11 @@ export default class App extends React.Component {
           <Block colour="blue">
             <RandomNumberButton text={'Generate a random message'} max={messages.length} onClick={this.handleRandomNumber}/>
             {randomMessage}
-          </Block>        
+          </Block>
+
+          <Block colour="peach">
+            <Counter count={messages.map(m => m.message).join(',').match(/love you/gi).length} item={`love you's`} />  
+          </Block>
         </React.Fragment>
       );
     } else {
