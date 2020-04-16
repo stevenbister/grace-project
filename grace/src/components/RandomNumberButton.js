@@ -4,8 +4,8 @@ import styled from 'styled-components';
 
 const Button = styled.button`
   grid-column: 2 / 3;
-  border: solid 2px var(--peach);
-  color: var(--peach);
+  border: solid 2px #fff;
+  color: #fff;
   background: transparent;
   padding: 15px 10px;
   margin-bottom: 20px;

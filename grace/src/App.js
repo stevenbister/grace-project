@@ -99,7 +99,15 @@ export default class App extends React.Component {
           </Block>
 
           <Block colour="peach">
-            <Counter count={messages.map(m => m.message).join(',').match(/love you/gi).length} item={`love you's`} />  
+            <Counter count={messages.map(m => m.message).join(',').match(/love you/gi).length} item={`love you's`} />
+
+            <Message
+              key={messages[2454].id}
+              name={messages[2454].meta.name} 
+              message={messages[2454].message} 
+              date={messages[2454].meta.date} 
+              time={messages[2454].meta.time} 
+            />
           </Block>
         </React.Fragment>
       );
