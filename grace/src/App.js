@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Message from './components/Message';
+import Message from './components/message';
 import Counter from './components/Counter';
 import Emoji from './components/Emoji'
 import RandomNumberButton from './components/RandomNumberButton';
@@ -103,8 +103,8 @@ export default class App extends React.Component {
           </Block>
         </React.Fragment>
       );
-    } else {
-      return <p>Loading...</p>
     }
+
+    return <p>Loading...</p>
   }  
 }

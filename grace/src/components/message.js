@@ -1,5 +1,6 @@
 import React from 'react';
-import styled from 'styled-components'
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const Container = styled.div`
   background: var(--message-colour);
@@ -9,6 +10,7 @@ const Container = styled.div`
   font-size: 14px;
   padding: 5px 20px 5px 5px;
   margin-bottom: 20px;
+  line-height: 1.3;
   word-wrap: anywhere;
   ${props => props.name === 'Grace' ? 'margin-right: 10px;' : 'margin-left: 10px;' };
 `;
@@ -41,6 +43,13 @@ const Message = (props) => {
       <Date>{date} {time}</Date>
     </Container>
   )
+}
+
+Message.propTypes = {
+  name: PropTypes.string,
+  message: PropTypes.string,
+  date: PropTypes.string,
+  time: PropTypes.string,
 }
 
 export default Message;

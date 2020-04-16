@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Paragraph = styled.p`
@@ -14,6 +15,11 @@ const Counter = (props) => <Paragraph><Span>{props.count}</Span> {props.item}</P
 
 Counter.defaultProps = {
   item: 'messages',
+}
+
+Counter.propTypes = {
+  count: PropTypes.number,
+  item: PropTypes.string
 }
 
 export default Counter;

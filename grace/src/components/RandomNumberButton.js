@@ -1,5 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const Button = styled.button`
   grid-column: 2 / 3;
@@ -19,6 +20,12 @@ const RandomNumberButton = (props) => {
   const { text } = props;
 
   return <Button onClick={handleClick}>{text}</Button>;
+}
+
+Button.propTypes = {
+  max: PropTypes.number,
+  text: PropTypes.string,
+  onClick: PropTypes.func
 }
 
 export default RandomNumberButton;

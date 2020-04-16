@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Wrapper = styled.section`
@@ -12,5 +13,10 @@ const Wrapper = styled.section`
 `;
 
 const Block = props => <Wrapper colour={props.colour}>{props.children}</Wrapper>;
+
+Block.propTypes = {
+  colour: PropTypes.string,
+  children: PropTypes.element.isRequired
+}
 
 export default Block;
