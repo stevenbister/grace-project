@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import {PropTypes, oneOfType} from 'prop-types';
 import styled from 'styled-components';
 
 const Wrapper = styled.section`
@@ -12,11 +12,18 @@ const Wrapper = styled.section`
   scroll-snap-align: start;
 `;
 
-const Block = props => <Wrapper colour={props.colour}>{props.children}</Wrapper>;
+const Block = props => {
+  return <Wrapper colour={props.colour}>{props.children}</Wrapper>;
+
+};
 
 Block.propTypes = {
   colour: PropTypes.string,
-  children: PropTypes.element.isRequired
+  children: oneOfType([
+    PropTypes.array,
+    PropTypes.object,
+    PropTypes.element
+  ])
 }
 
 export default Block;
