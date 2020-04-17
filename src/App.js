@@ -95,14 +95,16 @@ export default class App extends React.Component {
 
 
             <Block colour="peach">
-            <ParallaxLayer offset={1.5} speed={0.5}>
-              <Counter count={messages.map(m => m.message).join(',').match(/love you/gi).length} item={`love you's`} />
-            </ParallaxLayer>
+              <ParallaxLayer offset={1.5} speed={0.5}>
+                <Counter count={messages.map(m => m.message).join(',').match(/love you/gi).length} item={`love you's`} />
+              </ParallaxLayer>
             </Block>
 
             <Block colour="blue">
-              <RandomNumberButton text={'Generate a random message'} max={messages.length} onClick={this.handleRandomNumber}/>
+              <ParallaxLayer offset={1.7} speed={0.5}>
+                <RandomNumberButton text={'Generate a random message'} max={messages.length} onClick={this.handleRandomNumber}/>
               {randomMessage}
+              </ParallaxLayer>
             </Block>
           </Parallax>
         </React.Fragment>
