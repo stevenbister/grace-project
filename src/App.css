@@ -14,7 +14,6 @@
 html {
   font-family: var(--body-font);
   font-size: var(--base-font-size);
-  scroll-snap-type: y mandatory;
   color: #1e2019;
 }
 

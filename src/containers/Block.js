@@ -9,7 +9,6 @@ const Wrapper = styled.section`
   flex-flow: column;
   justify-content: center;
   padding: 2rem 0;
-  scroll-snap-align: start;
   position: relative;
 `;
 

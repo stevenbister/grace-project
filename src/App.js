@@ -101,9 +101,9 @@ export default class App extends React.Component {
             </Block>
 
             <Block colour="blue">
-              <ParallaxLayer offset={1.7} speed={0.5}>
+              <ParallaxLayer offset={1.7} speed={0.5} style={{height: '100vh'}}>
                 <RandomNumberButton text={'Generate a random message'} max={messages.length} onClick={this.handleRandomNumber}/>
-              {randomMessage}
+                {randomMessage}
               </ParallaxLayer>
             </Block>
           </Parallax>
