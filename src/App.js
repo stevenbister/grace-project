@@ -93,24 +93,16 @@ export default class App extends React.Component {
               </ParallaxLayer>
             </Block>
 
-            <Block colour="blue">
-              <RandomNumberButton text={'Generate a random message'} max={messages.length} onClick={this.handleRandomNumber}/>
-              {randomMessage}
-            </Block>
 
             <Block colour="peach">
             <ParallaxLayer offset={1.5} speed={0.5}>
               <Counter count={messages.map(m => m.message).join(',').match(/love you/gi).length} item={`love you's`} />
-
-              <Message
-                key={messages[2454].id}
-                name={messages[2454].meta.name} 
-                message={messages[2454].message} 
-                date={messages[2454].meta.date} 
-                time={messages[2454].meta.time} 
-              />
             </ParallaxLayer>
+            </Block>
 
+            <Block colour="blue">
+              <RandomNumberButton text={'Generate a random message'} max={messages.length} onClick={this.handleRandomNumber}/>
+              {randomMessage}
             </Block>
           </Parallax>
         </React.Fragment>
