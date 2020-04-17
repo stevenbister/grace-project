@@ -1,17 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import {useSpring, animated} from 'react-spring';
 
 const Paragraph = styled.p`
-  grid-column: 2 / 3;
+  margin: 0 1rem;
 `;
 
-const Span = styled.span`
+const AnimatedSpan = styled(animated.span)`
   font-family: var(--heading-font);
   font-size: 22vw;
 `
 
-const Counter = (props) => <Paragraph><Span>{props.count}</Span> {props.item}</Paragraph>
+const Counter = (props) => {
+  const spring = useSpring({ number: props.count, from: { number: 0 } })
+
+  return <Paragraph><AnimatedSpan>{spring.number.interpolate(number => Math.floor(number))}</AnimatedSpan> {props.item}</Paragraph>
+}
 
 Counter.defaultProps = {
   item: 'messages',

@@ -1,16 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
+import {Parallax, ParallaxLayer} from 'react-spring/renderprops-addons'
 import Message from './components/message';
 import Counter from './components/Counter';
 import Emoji from './components/Emoji'
 import RandomNumberButton from './components/RandomNumberButton';
 import Block from './containers/Block';
 import './App.css';
-
-const Heading2 = styled.h2`
-  font-size: 1.2rem;
-  margin-bottom: 1.6rem;
-`;
 
 export default class App extends React.Component {
   constructor(props) {
@@ -65,50 +60,59 @@ export default class App extends React.Component {
     if (isLoading === false) {
       return (
         <React.Fragment>
-          <Block colour="purple">
-            <Counter count={messages.length} />
-          </Block>
+          <Parallax ref={ref => (this.parallax = ref)} pages={5} >
+              <Block colour="purple">
+                <ParallaxLayer offset={0.5} speed={0.5}>
+                    <Counter count={messages.length} />
+                </ParallaxLayer>
+              </Block>
 
-          <Block colour="peach">
-            <Counter count={messages.map(m => m.message).join(',').match(/❤️/gi).length} item={`❤️'s`} />
+            <Block colour="peach">
+              <ParallaxLayer offset={0.5} speed={0.5}>
+                <Counter count={messages.map(m => m.message).join(',').match(/❤️/gi).length} item={`❤️'s`} />
 
-            <Heading2>That looks like this...</Heading2>
-            <Emoji emoji={messages.map(m => m.message).join(',').match(/❤️/gi)} />
-          </Block>
+                <Emoji emoji={messages.map(m => m.message).join(',').match(/❤️/gi)} />
+              </ParallaxLayer>
+            </Block>
 
-          <Block colour="green">
-            <Heading2>These were the first messages we sent each other after you gave me your number</Heading2>
-            {/* Let's get the first X messages */}
-            {messages.slice(0, 2).map(m => {
-              const { id, message } = m
-              const { name, date, time } = m.meta
+            <Block colour="green">
+              <ParallaxLayer offset={1} speed={0.75}>
+                {/* Let's get the first X messages */}
+                {messages.slice(0, 2).map(m => {
+                  const { id, message } = m
+                  const { name, date, time } = m.meta
 
-              return <Message 
-                key={id}
-                name={name} 
-                message={message} 
-                date={date} 
-                time={time}
+                  return <Message 
+                    key={id}
+                    name={name} 
+                    message={message} 
+                    date={date} 
+                    time={time}
+                  />
+                })}
+              </ParallaxLayer>
+            </Block>
+
+            <Block colour="blue">
+              <RandomNumberButton text={'Generate a random message'} max={messages.length} onClick={this.handleRandomNumber}/>
+              {randomMessage}
+            </Block>
+
+            <Block colour="peach">
+            <ParallaxLayer offset={1.5} speed={0.5}>
+              <Counter count={messages.map(m => m.message).join(',').match(/love you/gi).length} item={`love you's`} />
+
+              <Message
+                key={messages[2454].id}
+                name={messages[2454].meta.name} 
+                message={messages[2454].message} 
+                date={messages[2454].meta.date} 
+                time={messages[2454].meta.time} 
               />
-            })}
-          </Block>
+            </ParallaxLayer>
 
-          <Block colour="blue">
-            <RandomNumberButton text={'Generate a random message'} max={messages.length} onClick={this.handleRandomNumber}/>
-            {randomMessage}
-          </Block>
-
-          <Block colour="peach">
-            <Counter count={messages.map(m => m.message).join(',').match(/love you/gi).length} item={`love you's`} />
-
-            <Message
-              key={messages[2454].id}
-              name={messages[2454].meta.name} 
-              message={messages[2454].message} 
-              date={messages[2454].meta.date} 
-              time={messages[2454].meta.time} 
-            />
-          </Block>
+            </Block>
+          </Parallax>
         </React.Fragment>
       );
     }

@@ -8,8 +8,9 @@ const Wrapper = styled.section`
   display: flex;
   flex-flow: column;
   justify-content: center;
-  padding: 2rem 1rem;
+  padding: 2rem 0;
   scroll-snap-align: start;
+  position: relative;
 `;
 
 const Block = props => {

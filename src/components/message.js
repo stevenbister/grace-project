@@ -9,10 +9,10 @@ const Container = styled.div`
   box-shadow: 2px 2px 2px #7f7979;
   font-size: 14px;
   padding: 5px 20px 5px 5px;
-  margin: 10px 0;
+  margin: 1rem 1rem;
   line-height: 1.3;
   word-wrap: anywhere;
-  ${props => props.name === 'Grace' ? 'margin-right: 10px;' : 'margin-left: 10px;' };
+  ${props => props.name === 'Grace' ? 'margin-right: calc(1rem + 10px);' : 'margin-left: calc(1rem + 10px);' };
 `;
 
 const Name = styled.span`
